@@ -1,12 +1,11 @@
 const posts = [
     {
         id: 1,
-        cover: "images/post1.jpg",
-        text: "Прорыв в области квантовых вычислений! Исследователи достигли нового рекорда стабильности кубитов. <a href='https://example.com'>Подробнее</a>",
+        cover: "images/2026000.png",
+        text: ".Our company will soon launch its first programming startup! <a href='https://example.com'>Подробнее</a>",
         author: "VERIDIAN TECH",
         social: [
-            { url: "https://twitter.com/user1", icon: "𝕏" },
-            { url: "https://t.me/user1", icon: "TG" }
+            { url: "https://t.me/VeridianTech", icon: "TG" }
         ],
         date: "04.06.2026 14:30"
     },
