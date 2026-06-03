@@ -1,12 +1,12 @@
 const posts = [
     {
         id: 1,
-        cover: "p", 
-        text: "Глобальный отчет: Цифровые экосистемы требуют немедленной защиты. Новые данные показывают критическую уязвимость открытых сетей.",
-        author: "Команда Veridian",
+        cover: "images\2026000.png", 
+        text: "Our company will soon launch its first programming startup!.",
+        author: "VERIDIAN NEWS",
         social: [
             { url: "#", icon: "VK" },
-            { url: "#", icon: "TG" }
+            { url: "https://t.me/VeridianTech", icon: "TG" }
         ],
         date: "04.06.2026 14:30"
     },
