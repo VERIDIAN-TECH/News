@@ -1,77 +1,58 @@
-document.addEventListener('DOMContentLoaded', function() {
-    const postsContainer = document.getElementById('posts-container');
-    const loading = document.getElementById('loading');
-    
-    // Функция парсинга даты в формате DD.MM.YYYY HH:MM
-    function parseDate(dateString) {
-        const [datePart, timePart] = dateString.split(' ');
-        const [day, month, year] = datePart.split('.').map(Number);
-        const [hours, minutes] = timePart.split(':').map(Number);
-        
-        return new Date(year, month - 1, day, hours, minutes);
+document.addEventListener('DOMContentLoaded', () => {
+    const feedContainer = document.getElementById('news-feed');
+    const statusMsg = document.getElementById('status-message');
+
+    // 1. Проверка данных
+    if (typeof posts === 'undefined' || !Array.isArray(posts) || posts.length === 0) {
+        statusMsg.textContent = "Ошибка: Список новостей пуст или файл posts.js не загружен.";
+        statusMsg.style.color = "#cc0000";
+        return;
     }
-    
-    // Сортировка постов по дате (новые сверху)
-    function sortPostsByDate(postsArray) {
-        return postsArray.sort((a, b) => {
-            const dateA = parseDate(a.date);
-            const dateB = parseDate(b.date);
-            return dateB - dateA; // По убыванию (новые первыми)
-        });
-    }
-    
-    // Создание HTML для социального ссылки
-    function createSocialLinks(socialArray) {
-        if (!socialArray || socialArray.length === 0) return '';
-        
-        return socialArray.slice(0, 3).map(social => `
-            <a href="${social.url}" target="_blank" rel="noopener noreferrer" class="social-link" title="${social.url}">
-                ${social.icon}
-            </a>
-        `).join('');
-    }
-    
-    // Создание карточки поста
-    function createPostCard(post) {
-        const coverHtml = post.cover ? `<img src="${post.cover}" alt="Cover" class="post-cover">` : '';
-        
+
+    // 2. Функция парсинга даты (ДД.ММ.ГГГГ ЧЧ:ММ)
+    const parseDate = (dateStr) => {
+        try {
+            const [datePart, timePart] = dateStr.split(' ');
+            const [day, month, year] = datePart.split('.').map(Number);
+            const [hours, minutes] = timePart.split(':').map(Number);
+            return new Date(year, month - 1, day, hours, minutes).getTime();
+        } catch (e) {
+            console.error("Ошибка даты:", dateStr);
+            return 0;
+        }
+    };
+
+    // 3. Сортировка: новые сверху
+    const sortedPosts = [...posts].sort((a, b) => parseDate(b.date) - parseDate(a.date));
+
+    // 4. Генерация HTML
+    const renderPost = (post) => {
+        const imgHTML = post.cover 
+            ? `<div class="post-image-wrap"><img src="${post.cover}" alt="Обложка" class="post-cover" loading="lazy"></div>` 
+            : '';
+
+        const socialHTML = (post.social || []).slice(0, 3).map(s => 
+            `<a href="${s.url}" target="_blank" class="s-link">${s.icon}</a>`
+        ).join('');
+
         return `
             <article class="post-card">
-                ${coverHtml}
-                <div class="post-content">
-                    <div class="post-text">${post.text}</div>
+                ${imgHTML}
+                <div class="post-body">
+                    <div>
+                        <time class="post-date">${post.date}</time>
+                        <div class="post-text">${post.text}</div>
+                    </div>
                     <div class="post-meta">
-                        <div class="post-author">
-                            <span class="author-label">Автор:</span>
-                            <span class="author-name">${post.author}</span>
-                        </div>
-                        <div class="post-date">${post.date}</div>
-                        <div class="post-social">
-                            ${createSocialLinks(post.social)}
-                        </div>
+                        <span class="author-block">Автор: ${post.author}</span>
+                        <div class="social-links">${socialHTML}</div>
                     </div>
                 </div>
             </article>
         `;
-    }
-    
-    // Рендеринг постов
-    function renderPosts() {
-        try {
-            if (typeof posts === 'undefined') {
-                throw new Error('Posts data not found');
-            }
-            
-            const sortedPosts = sortPostsByDate([...posts]);
-            postsContainer.innerHTML = sortedPosts.map(createPostCard).join('');
-            loading.style.display = 'none';
-        } catch (error) {
-            console.error('Error loading posts:', error);
-            postsContainer.innerHTML = '<div class="loading">Ошибка загрузки постов</div>';
-            loading.style.display = 'none';
-        }
-    }
-    
-    // Инициализация
-    renderPosts();
+    };
+
+    // 5. Вывод
+    feedContainer.innerHTML = sortedPosts.map(renderPost).join('');
+    statusMsg.style.display = 'none'; // Скрываем статус после загрузки
 });
