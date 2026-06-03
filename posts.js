@@ -7,7 +7,7 @@ const posts = [
         social: [
             { url: "https://t.me/VeridianTech", icon: "TG" }
         ],
-        date: "04.06.2026 14:30"
+        date: "04.06.2026 2:15"
     },
     {
         id: 2,
