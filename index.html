@@ -3,91 +3,105 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VERIDIAN NEWS | Dark Edition</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <title>VERIDIAN NEWS</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <!-- Шапка -->
-    <header class="main-header">
-        <div class="header-container">
-            <div class="brand">
-                <a href="#home" class="logo-link">
-                    <span class="v-green">V</span>ERIDIAN <span class="n-red">NEWS</span>
-                </a>
-                <p class="tagline">Цифровой океан под защитой</p>
-            </div>
-            <nav class="main-nav">
-                <a href="#news" class="nav-item active">Новости</a>
-                <a href="#about" class="nav-item">О проекте</a>
-                <a href="#contacts" class="nav-item">Контакты</a>
+    <!-- Навигация -->
+    <header class="sticky-header">
+        <div class="nav-container">
+            <a href="#home" class="logo">
+                <span class="v-accent">V</span>ERIDIAN <span class="n-accent">NEWS</span>
+            </a>
+            <nav class="desktop-nav">
+                <a href="#news" class="nav-link active">Лента</a>
+                <a href="#about" class="nav-link">Миссия</a>
+                <a href="#contacts" class="nav-link">Контакты</a>
             </nav>
+            <button class="mobile-menu-btn" aria-label="Menu">☰</button>
         </div>
     </header>
 
-    <!-- Главный контент -->
     <main id="home">
-        
+        <!-- Герой-секция -->
+        <section class="hero-section">
+            <div class="container">
+                <h1 class="hero-title">Цифровая оборона<br>нового поколения</h1>
+                <p class="hero-subtitle">Мониторинг угроз. Защита данных. Прозрачность информации.</p>
+            </div>
+        </section>
+
         <!-- Секция новостей -->
         <section id="news" class="content-section">
             <div class="container">
-                <h2 class="section-title">Последние сводки</h2>
-                <div id="news-feed" class="news-grid">
-                    <!-- Посты загружаются через JS -->
+                <div class="section-header">
+                    <h2 class="section-title">Оперативная сводка</h2>
+                    <div class="filter-tags">
+                        <span class="tag active">Все</span>
+                        <span class="tag">Кибербезопасность</span>
+                        <span class="tag">Технологии</span>
+                    </div>
                 </div>
-                <div id="status-message" class="status-msg">Загрузка данных...</div>
+                
+                <div id="news-feed" class="modern-grid">
+                    <!-- Посты рендерятся здесь -->
+                </div>
+                <div id="status-message" class="loader"></div>
             </div>
         </section>
 
-        <!-- Секция О нас (для работы навигации) -->
-        <section id="about" class="content-section alt-bg">
-            <div class="container">
-                <h2 class="section-title">О VERIDIAN</h2>
-                <p class="about-text">
-                    Мы — цифровая стража. Наша миссия заключается в мониторинге, защите и сохранении целостности информационных потоков. 
-                    Как морские пастухи охраняют океан, мы охраняем ваше цифровое пространство от угроз, дезинформации и кибер-штормов.
-                </p>
+        <!-- Секция О нас -->
+        <section id="about" class="content-section glass-panel">
+            <div class="container split-layout">
+                <div class="text-block">
+                    <h2 class="section-title">Наша миссия</h2>
+                    <p>Veridian News — это независимая платформа цифровой разведки. Мы собираем, верифицируем и публикуем данные о состоянии глобальной информационной инфраструктуры.</p>
+                    <p>Наш подход основан на принципах открытости и технической точности.</p>
+                </div>
+                <div class="stats-block">
+                    <div class="stat-item">
+                        <span class="stat-num">24/7</span>
+                        <span class="stat-desc">Мониторинг</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-num">10k+</span>
+                        <span class="stat-desc">Источников</span>
+                    </div>
+                </div>
             </div>
         </section>
 
-        <!-- Секция Контакты (для работы навигации) -->
+        <!-- Контакты -->
         <section id="contacts" class="content-section">
             <div class="container">
-                <h2 class="section-title">Связь с нами</h2>
-                <div class="contact-grid">
-                    <div class="contact-card">
-                        <h3>Пресс-служба</h3>
-                        <p>press@veridian.news</p>
-                    </div>
-                    <div class="contact-card">
-                        <h3>Техподдержка</h3>
-                        <p>help@veridian.news</p>
-                    </div>
+                <h2 class="section-title">Каналы связи</h2>
+                <div class="contact-cards">
+                    <a href="mailto:secure@veridian.news" class="c-card">
+                        <h3>Secure Mail</h3>
+                        <p>secure@veridian.news</p>
+                    </a>
+                    <a href="#" class="c-card">
+                        <h3>Telegram Channel</h3>
+                        <p>@veridian_official</p>
+                    </a>
                 </div>
             </div>
         </section>
-
     </main>
 
-    <!-- Футер -->
     <footer class="main-footer">
-        <div class="container footer-content">
-            <p>&copy; 2026 VERIDIAN NEWS. All rights reserved.</p>
-            <div class="footer-links">
-                <a href="#home">Наверх</a>
-                <a href="#">Политика конфиденциальности</a>
-            </div>
+        <div class="container">
+            <p>&copy; 2026 VERIDIAN NEWS. Encrypted & Verified.</p>
         </div>
     </footer>
 
-    <!-- Модальное окно для полного поста -->
-    <div id="post-modal" class="modal-overlay">
-        <div class="modal-content">
-            <button id="close-modal" class="close-btn">&times;</button>
-            <div id="modal-body">
-                <!-- Контент поста -->
-            </div>
+    <!-- Модальное окно -->
+    <div id="post-modal" class="modal-backdrop">
+        <div class="modal-sheet">
+            <button id="close-modal" class="modal-close" aria-label="Close">×</button>
+            <div id="modal-content-wrapper"></div>
         </div>
     </div>
 
