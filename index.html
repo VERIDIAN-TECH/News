@@ -4,42 +4,54 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>VERIDIAN NEWS</title>
+    <!-- Подключаем шрифты, похожие на стиль Sea Shepherd -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;500;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div class="circuit-bg"></div>
-    
-    <header class="header">
-        <div class="logo-container">
-            <div class="logo-vn">
-                <svg viewBox="0 0 200 120" class="logo-svg">
-                    <path class="logo-green" d="M20,100 L50,20 L80,80 L110,40 L140,90" stroke="#00ff41" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-                    <path class="logo-red" d="M90,90 L120,30 L150,70 L180,20" stroke="#ff0040" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-                    <circle cx="20" cy="100" r="3" fill="#00ff41"/>
-                    <circle cx="50" cy="20" r="3" fill="#00ff41"/>
-                    <circle cx="180" cy="20" r="3" fill="#ff0040"/>
-                </svg>
+
+    <!-- Шапка в морском стиле -->
+    <header class="main-header">
+        <div class="header-container">
+            <div class="brand">
+                <div class="logo-text">
+                    <span class="v-green">V</span>ERIDIAN <span class="n-red">NEWS</span>
+                </div>
+                <p class="tagline">Защита цифрового океана</p>
             </div>
-            <h1 class="site-title"><span class="title-green">VERIDIAN</span> <span class="title-red">NEWS</span></h1>
+            <nav class="main-nav">
+                <a href="#" class="nav-item active">Новости</a>
+                <a href="#" class="nav-item">Кампании</a>
+                <a href="#" class="nav-item">О нас</a>
+                <a href="#" class="nav-btn">Поддержать</a>
+            </nav>
         </div>
-        <nav class="nav">
-            <a href="#" class="nav-link active">Главная</a>
-            <a href="#" class="nav-link">Категории</a>
-            <a href="#" class="nav-link">О нас</a>
-        </nav>
     </header>
 
-    <main class="container">
-        <div id="posts-container" class="posts-grid">
+    <!-- Основной контент -->
+    <main class="content-wrapper">
+        <div class="container">
+            <!-- Блок для вывода постов -->
+            <section id="news-feed" class="news-grid">
+                <!-- Посты будут здесь -->
+            </section>
+            
+            <!-- Индикатор загрузки / ошибки -->
+            <div id="status-message" class="status-msg">Загрузка новостей...</div>
         </div>
-        <div id="loading" class="loading">Загрузка...</div>
     </main>
 
-    <footer class="footer">
-        <p>&copy; 2026 <span class="footer-green">VERIDIAN</span> <span class="footer-red">NEWS</span>. Все права защищены.</p>
+    <footer class="main-footer">
+        <div class="container footer-content">
+            <p>&copy; 2026 VERIDIAN NEWS. Все права защищены.</p>
+            <div class="footer-links">
+                <a href="#">Политика конфиденциальности</a>
+                <a href="#">Контакты</a>
+            </div>
+        </div>
     </footer>
 
+    <!-- Сначала данные, потом логика -->
     <script src="posts.js"></script>
     <script src="script.js"></script>
 </body>
