@@ -3,55 +3,94 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VERIDIAN NEWS</title>
-    <!-- Подключаем шрифты, похожие на стиль Sea Shepherd -->
+    <title>VERIDIAN NEWS | Dark Edition</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <!-- Шапка в морском стиле -->
+    <!-- Шапка -->
     <header class="main-header">
         <div class="header-container">
             <div class="brand">
-                <div class="logo-text">
+                <a href="#home" class="logo-link">
                     <span class="v-green">V</span>ERIDIAN <span class="n-red">NEWS</span>
-                </div>
-                <p class="tagline">Защита цифрового океана</p>
+                </a>
+                <p class="tagline">Цифровой океан под защитой</p>
             </div>
             <nav class="main-nav">
-                <a href="#" class="nav-item active">Новости</a>
-                <a href="#" class="nav-item">Кампании</a>
-                <a href="#" class="nav-item">О нас</a>
-                <a href="#" class="nav-btn">Поддержать</a>
+                <a href="#news" class="nav-item active">Новости</a>
+                <a href="#about" class="nav-item">О проекте</a>
+                <a href="#contacts" class="nav-item">Контакты</a>
             </nav>
         </div>
     </header>
 
-    <!-- Основной контент -->
-    <main class="content-wrapper">
-        <div class="container">
-            <!-- Блок для вывода постов -->
-            <section id="news-feed" class="news-grid">
-                <!-- Посты будут здесь -->
-            </section>
-            
-            <!-- Индикатор загрузки / ошибки -->
-            <div id="status-message" class="status-msg">Загрузка новостей...</div>
-        </div>
+    <!-- Главный контент -->
+    <main id="home">
+        
+        <!-- Секция новостей -->
+        <section id="news" class="content-section">
+            <div class="container">
+                <h2 class="section-title">Последние сводки</h2>
+                <div id="news-feed" class="news-grid">
+                    <!-- Посты загружаются через JS -->
+                </div>
+                <div id="status-message" class="status-msg">Загрузка данных...</div>
+            </div>
+        </section>
+
+        <!-- Секция О нас (для работы навигации) -->
+        <section id="about" class="content-section alt-bg">
+            <div class="container">
+                <h2 class="section-title">О VERIDIAN</h2>
+                <p class="about-text">
+                    Мы — цифровая стража. Наша миссия заключается в мониторинге, защите и сохранении целостности информационных потоков. 
+                    Как морские пастухи охраняют океан, мы охраняем ваше цифровое пространство от угроз, дезинформации и кибер-штормов.
+                </p>
+            </div>
+        </section>
+
+        <!-- Секция Контакты (для работы навигации) -->
+        <section id="contacts" class="content-section">
+            <div class="container">
+                <h2 class="section-title">Связь с нами</h2>
+                <div class="contact-grid">
+                    <div class="contact-card">
+                        <h3>Пресс-служба</h3>
+                        <p>press@veridian.news</p>
+                    </div>
+                    <div class="contact-card">
+                        <h3>Техподдержка</h3>
+                        <p>help@veridian.news</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
     </main>
 
+    <!-- Футер -->
     <footer class="main-footer">
         <div class="container footer-content">
-            <p>&copy; 2026 VERIDIAN NEWS. Все права защищены.</p>
+            <p>&copy; 2026 VERIDIAN NEWS. All rights reserved.</p>
             <div class="footer-links">
+                <a href="#home">Наверх</a>
                 <a href="#">Политика конфиденциальности</a>
-                <a href="#">Контакты</a>
             </div>
         </div>
     </footer>
 
-    <!-- Сначала данные, потом логика -->
+    <!-- Модальное окно для полного поста -->
+    <div id="post-modal" class="modal-overlay">
+        <div class="modal-content">
+            <button id="close-modal" class="close-btn">&times;</button>
+            <div id="modal-body">
+                <!-- Контент поста -->
+            </div>
+        </div>
+    </div>
+
     <script src="posts.js"></script>
     <script src="script.js"></script>
 </body>
